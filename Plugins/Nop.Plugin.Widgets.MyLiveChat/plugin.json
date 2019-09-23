@@ -1,0 +1,16 @@
+﻿{
+  "Group": "Widgets",
+  "FriendlyName": "MyLiveChat.com Widget",
+  "SystemName": "Widgets.MyLiveChat",
+  "Version": "2.1",
+  "SupportedVersions": [
+    "4.20"
+  ],
+  "Author": "MasterSoft Software Solutions Ltd.",
+  "DisplayOrder": 300,
+  "FileName": "Nop.Plugin.Widgets.MyLiveChat.dll",
+  "Description": "This plugin implements a widget to display the MyLiveChat chat inside nopCommerce. See https://mylivechat.com for further information",
+  "LimitedToStores": [],
+  "LimitedToCustomerRoles": [],
+  "DependsOnSystemNames": null
+}

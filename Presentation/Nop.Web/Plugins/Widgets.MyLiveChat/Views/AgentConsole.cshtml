@@ -1,0 +1,63 @@
+﻿@{
+
+}
+
+@using Nop.Web.Framework;
+@using Nop.Core;
+@using Nop.Core.Infrastructure
+@using Nop.Web.Framework.Themes
+@using Nop.Web.Framework.UI
+@using Nop.Plugin.Widgets.MyLiveChat;
+
+@model Nop.Plugin.Widgets.MyLiveChat.Models.AgentConsoleModel
+
+@{
+    string strUserName = Model.UserName;
+    string strUserMail = Model.UserMail;
+    string strStoreName = Model.StoreName;
+    string strAPIId = Model.MyLiveChatAccountId;
+    string strChatConnectionUrl = Model.MyLiveChatConnectionUrl;
+    string strContextData = Model.ContextData;
+    string strLanguage = Model.UserLanguage;
+    string strProductTitle = Model.UserProductTitle;
+    string strProductKey = Model.UserProductSKU;
+
+    Layout = "_ConfigurePlugin";
+}
+
+@Html.AntiForgeryToken()
+
+<script type="text/javascript">
+function MyLiveChat_OnInit() {
+    MyLiveChat_SetUserName('@strUserName');
+    MyLiveChat_SetEmail('@strUserMail');
+    MyLiveChat_SetDepartment('@strStoreName');
+    //MyLiveChat_SetQuestion("test question");
+    MyLiveChat_SetContextData('@strContextData');
+    MyLiveChat_SetProductName('@strProductTitle');
+    MyLiveChat_SetProductKey('@strProductKey');
+}
+</script>
+
+<div class="section-header">
+    <div class="title">
+        <img src="@Url.Content("~/Administration/Content/images/ico-configuration.png")" alt="" />
+        @T("Plugins.Widgets.MyLiveChat.MyLiveChatConsole")
+    </div>
+    <div class="options">
+        
+    </div>
+</div>
+<div align="center">
+    <table class="" >
+        <tr>
+            <td>
+                <div class="adminContent" align="center" style="overflow:scroll;">
+                    <center>
+                        <iframe src="https://www.mylivechat.com/webconsole/" frameborder="0" style="border: 0; position:relative; left:0; right:0; bottom:0; width:1024px; height:768px;display:block;"></iframe>
+                    </center>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>

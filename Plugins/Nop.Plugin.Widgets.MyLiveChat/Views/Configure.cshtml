@@ -1,0 +1,65 @@
+﻿@model Nop.Plugin.Widgets.MyLiveChat.Models.ConfigurationModel
+
+@{
+    Layout = "_ConfigurePlugin";
+}
+
+@await Component.InvokeAsync("StoreScopeConfiguration")
+
+@using (Html.BeginForm("AgentConsole", "MyLiveChat", null, FormMethod.Get))
+{
+    <input type="submit" name="save" class="k-button" value="@T("Plugins.Widgets.MyLiveChat.ShowAgentConsole")" />
+}
+
+<form asp-controller="MyLiveChat" asp-action="Configure" method="post">
+    <div class="panel-group">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                @T("Plugins.Widgets.MyLiveChat.Instructions")
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="MyLiveChatID_OverrideForStore" asp-input="MyLiveChatID" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="MyLiveChatID" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="MyLiveChatID" />
+                        <span asp-validation-for="MyLiveChatID"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="MyLiveChatEnableEncryption_OverrideForStore" asp-input="MyLiveChatEnableEncryption" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="MyLiveChatEnableEncryption" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="MyLiveChatEnableEncryption" />
+                        <span asp-validation-for="MyLiveChatEnableEncryption"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="MyLiveChatEncryptionKey_OverrideForStore" asp-input="MyLiveChatEncryptionKey" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="MyLiveChatEncryptionKey" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="MyLiveChatEncryptionKey" />
+                        <span asp-validation-for="MyLiveChatEncryptionKey"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-3">
+                        &nbsp;
+                    </div>
+                    <div class="col-md-9">
+                        <input type="submit" name="save" class="btn bg-blue" value="@T("Admin.Common.Save")" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

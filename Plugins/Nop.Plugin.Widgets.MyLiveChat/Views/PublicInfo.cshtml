@@ -1,0 +1,37 @@
+﻿@using Nop.Core.Infrastructure
+@using Nop.Services.Localization
+@using Nop.Web.Framework.Themes
+@using Nop.Web.Framework.UI
+
+@model Nop.Plugin.Widgets.MyLiveChat.Models.PublicInfoModel
+@{
+    Layout = "";
+
+    string strUserName = Model.UserName;
+    string strUserMail = Model.UserMail;
+    string strStoreName = Model.StoreName;
+    string strAPIId = Model.MyLiveChatAccountId;
+    string strChatConnectionUrl = Model.MyLiveChatConnectionUrl;
+    string strContextData = Model.ContextData;
+    string strLanguage = Model.UserLanguage;
+    string strProductTitle = Model.UserProductTitle;
+    string strProductKey = Model.UserProductSKU;
+    string strUserKey = Model.MyLiveChatUserKey;
+}
+
+<script type="text/javascript">
+function MyLiveChat_OnInit() {
+    MyLiveChat_SetUserName('@strUserName', '@strUserKey');
+    MyLiveChat_SetEmail('@strUserMail');
+    MyLiveChat_SetDepartment('@strStoreName');
+    MyLiveChat_SetContextData('@strContextData');
+    MyLiveChat_SetProductName('@strProductTitle');
+    MyLiveChat_SetProductKey('@strProductKey');
+}
+</script>
+
+<script type="text/javascript" async="async" defer="defer" data-cfasync="false" src="https://mylivechat.com/chatinline.aspx?hccid=@(Model.MyLiveChatAccountId)&lang=@(strLanguage)&fixchrome=yes">
+</script>
+
+
+
